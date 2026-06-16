@@ -48,8 +48,8 @@ export function PetFormDialog() {
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger asChild>
-        <Button className="gap-2"><Plus className="w-4 h-4" /> Adicionar Pet</Button>
+      <DialogTrigger render={<Button className="gap-2" />}>
+        <Plus className="w-4 h-4" /> Adicionar Pet
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <form onSubmit={onSubmit}>
