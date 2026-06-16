@@ -5,7 +5,7 @@ import { authClient } from "@/lib/auth-client";
 
 const LOGIN_PATH = "/login";
 const DASHBOARD_PATH = "/";
-const PUBLIC_PATH_PREFIXES = ["/login", "/convite"];
+const PUBLIC_PATH_PREFIXES = ["/login", "/convite", "/register"];
 
 function isPublicPath(pathname: string) {
   return PUBLIC_PATH_PREFIXES.some(
