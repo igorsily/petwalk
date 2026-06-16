@@ -27,12 +27,12 @@ export async function createPetAction(formData: FormData) {
     }
 
     const data = {
-      name: formData.get("name") as string,
-      breed: formData.get("breed") as string,
-      age: formData.get("age"),
-      weight: formData.get("weight"),
-      notes: formData.get("notes") as string,
-      photoUrl: formData.get("photoUrl") as string,
+      name: formData.get("name") || "",
+      breed: formData.get("breed") || undefined,
+      age: formData.get("age") || undefined,
+      weight: formData.get("weight") || undefined,
+      notes: formData.get("notes") || undefined,
+      photoUrl: formData.get("photoUrl") || undefined,
     };
 
     const parsed = petSchema.safeParse(data);

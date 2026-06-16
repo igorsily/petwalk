@@ -9,7 +9,8 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Star } from "lucide-react";
 import { ScheduleForm } from "@/features/walks/components/schedule-form";
 
-export default async function WalkerProfilePage({ params }: { params: { walkerId: string } }) {
+export default async function WalkerProfilePage({ params }: { params: Promise<{ walkerId: string }> }) {
+  const { walkerId } = await params;
   const session = await auth.api.getSession({
     headers: await headers()
   });
@@ -29,7 +30,7 @@ export default async function WalkerProfilePage({ params }: { params: { walkerId
     })
     .from(walkers)
     .innerJoin(user, eq(walkers.userId, user.id))
-    .where(eq(walkers.id, params.walkerId))
+    .where(eq(walkers.id, walkerId))
     .limit(1);
 
   if (walkerData.length === 0) {
