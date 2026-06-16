@@ -3,6 +3,6 @@ import postgres from 'postgres';
 import * as schema from './schema';
 
 // Cria o pool de conexão
-const queryClient = postgres(process.env.DATABASE_URL!);
+const queryClient = postgres(process.env.DATABASE_URL!, { prepare: false });
 
 export const db = drizzle(queryClient, { schema });
